@@ -13,7 +13,7 @@ class Control extends CI_Controller {
         echo "thằng buôi đầu cặc lõ";
     }
 
-	}
+	
 
 	public function hello()
 	{
