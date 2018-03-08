@@ -7,4 +7,9 @@ class Control extends CI_Controller {
 	{
 		$this->load->view('welcome_message');
 	}
+
+	public function hello()
+	{
+		print "hello cc!";
+	}
 }
