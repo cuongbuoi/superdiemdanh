@@ -1,0 +1,19 @@
+.login-body{
+    background-color: $blue;
+    .card-login{
+        border-radius: 0;
+        @include box-shadow(2px, 2px,6px, #999);
+        .form-control{
+            border-radius:0;
+            transition: all 0.3s;
+            &:focus{
+                border:none;
+                border-bottom: 2px solid $blue;
+                border-color: none;
+            }
+        }
+    }
+    .btn-login{
+        @include button($blue, #fff);
+    }
+}
