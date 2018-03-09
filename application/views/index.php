@@ -9,6 +9,7 @@
    <link href="application/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
    <link href="application/assets/css/style.css" rel="stylesheet" type="text/css" />
     <script src="application/assets/js/jquery.js"></script>
+    <script src="application/assets/js/bootstrap.min.js"></script>
 </head>
 <body class="login-body">
     <div class="d-flex  justify-content-center">

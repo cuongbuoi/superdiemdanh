@@ -19,5 +19,10 @@ class Control extends CI_Controller {
 	{
 		print "hello cc!";
 	}
+	public function dashboard(){
+		$data['header']='module/navbar';
+		$data['sidebar']='module/sidebar';
+		$this->load->view('dashboard',$data);
+	}
 
 }

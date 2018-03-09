@@ -1,3 +1,6 @@
+.nav-custom .btn-sidebar {
+  border-radius: 0; }
+
 .login-body {
   background-color: #008eff; }
   .login-body .card-login {
