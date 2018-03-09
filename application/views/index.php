@@ -8,13 +8,18 @@
     
    <link href="application/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
    <link href="application/assets/css/style.css" rel="stylesheet" type="text/css" />
-    <script src="application/assets/jquery.js"></script>
+    <script src="application/assets/js/jquery.js"></script>
 </head>
 <body class="login-body">
     <div class="d-flex  justify-content-center">
         <div class="col-md-5 mt-5">
             <div class="card card-login">
                 <div class="card-body">
+                    <div class="d-flex justify-content-center">
+                        <div class="avatar">
+                            <img src="application/assets/img/male-4.png" alt="">
+                        </div>
+                    </div>
                     <h1 class="text-center">Đăng nhập</h1>
                     <form action="#">
                         <div class="form-group">
