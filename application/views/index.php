@@ -23,8 +23,8 @@
                         </div>
                     </div>
                     <h1 class="text-center">Đăng nhập</h1>
-                    <?php echo form_open('http://localhost/superdiemdanh/'); ?>
-                    <form action="#" method="post">
+                    
+                    <form action="http://localhost/superdiemdanh/" method="post">
                         <div class="form-group">
                             <label for="username">Tài khoản</label>
                             <input name="username" type="text" class="form-control" placeholder="Nhập vào tài khoản của bạn">
@@ -41,6 +41,7 @@
                             <input name="action" hidden value="login">
                         </div>
                         <button id="btn-login" type="submit" class="btn btn-primary btn-login float-right">Đăng nhập</button>
+                        <label class="text-danger"><?php echo $this->session->flashdata('error');?></label> 
                     </form>
                 </div>
             </div>

@@ -6,7 +6,7 @@ class Control extends CI_Controller {
 			parent::__construct();
 			$this->load->model('admin');
 			$this->load->helper(array('form', 'url'));
-			$this->load->library('session');
+		
 	}
 
 	public function index()
@@ -42,6 +42,7 @@ class Control extends CI_Controller {
 				if( $this->admin->admin_login($this->input->post('username'),$this->input->post('password'))==1)
 						redirect('http://localhost/superdiemdanh/control/dashboard');
 				else{
+							$this->session->set_flashdata('error','Sai tài khoản hoặc mật khẩu');
 							redirect('http://localhost/superdiemdanh/');
 				}
 
@@ -50,7 +51,16 @@ class Control extends CI_Controller {
 		else
 			$this->load->view('index');
 
-    }
+		}
+		
+		public function logout()
+		{
+			if($this->session->userdata('admin') != "")
+			{
+				$this->session->unset_userdata('admin');
+				redirect('http://localhost/superdiemdanh/');
+			}
+		}
   public function admin()
     {
         echo "thằng buôi đầu cặc lõ";
@@ -63,6 +73,10 @@ class Control extends CI_Controller {
 		print "hello cc!";
 	}
 	public function dashboard(){
+		if($this->session->userdata('admin') == '')
+		{
+			redirect('http://localhost/superdiemdanh/');
+		}
 		$data['header']='module/navbar';
 		$data['sidebar']='module/sidebar';
 		$data['diemdanh']='module/diemdanh-content';

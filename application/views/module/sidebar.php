@@ -5,7 +5,7 @@
             Xin chào, Sếp <i class="dropdown-toggle"></i>
         </a>
         <div class="dropdown-menu" aria-labelledby="tuychon">
-            <a class="dropdown-item" href="#"><i class="fa fa-power-off"></i> Đăng xuất </a>
+            <a class="dropdown-item" href="http://localhost/superdiemdanh/control/logout"><i class="fa fa-power-off"></i> Đăng xuất </a>
         </div>
     </div>
 
