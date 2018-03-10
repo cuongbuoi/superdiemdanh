@@ -10,6 +10,7 @@
    <link href="application/assets/css/style.css" rel="stylesheet" type="text/css" />
     <script src="application/assets/js/jquery.js"></script>
     <script src="application/assets/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body class="login-body">
     <div class="d-flex  justify-content-center">
@@ -22,20 +23,23 @@
                         </div>
                     </div>
                     <h1 class="text-center">Đăng nhập</h1>
-                    <form action="#">
+                    <?php echo form_open('http://localhost/superdiemdanh/control/login'); ?>
+                    <form action="#" method="post">
                         <div class="form-group">
                             <label for="username">Tài khoản</label>
-                            <input type="text" class="form-control" placeholder="Nhập vào tài khoản của bạn">
+                            <input name="username" type="text" class="form-control" placeholder="Nhập vào tài khoản của bạn">
+                            <label for="username"><?php echo form_error('username'); ?></label>
                         </div>
                         <div class="form-group">
                             <label for="pass">Mật khẩu</label>
-                            <input type="password" class="form-control" placeholder="Nhập vào mật khẩu của bạn">
+                            <input name="password" type="password" class="form-control" placeholder="Nhập vào mật khẩu của bạn">
+                            <label for="pass"><?php echo form_error('password'); ?></label>
                         </div>
                         <div class="form-check">
                             <input type="checkbox" class="form-check-input">
                             <label class="form-check-label">Nhớ mật khẩu</label>
                         </div>
-                        <button type="button" class="btn btn-primary btn-login float-right">Đăng nhập</button>
+                        <button id="btn-login" type="submit" class="btn btn-primary btn-login float-right">Đăng nhập</button>
                     </form>
                 </div>
             </div>

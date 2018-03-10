@@ -2,13 +2,19 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Control extends CI_Controller {
+		function __construct() {
+			parent::__construct();
+			$this->load->model('admin');
+			$this->load->helper(array('form', 'url'));
+			$this->load->library('session');
+	}
 
 	public function index()
 	{
 		$this->load->view('index');
 
     }
-    public function admin()
+  public function admin()
     {
         echo "thằng buôi đầu cặc lõ";
     }
@@ -545,5 +551,43 @@ class Control extends CI_Controller {
 			]
 		  }';
 	}
+	public function login()
+	{
+		$this->load->library('form_validation');
+		$config = array(
+			array(
+							'field' => 'username',
+							'label' => 'Username',
+							'rules' => 'required',
+							'errors' => array(
+								'required' => 'Tài không được để trống',
+				),
+			),
+			array(
+							'field' => 'password',
+							'label' => 'Password',
+							'rules' => 'required',
+							'errors' => array(
+											'required' => 'Mật khẩu không được để trống',
+							),
+			)
+		);
+		$this->form_validation->set_rules($config);
+		if ($this->form_validation->run() == FALSE)
+		{	
+				//redirect('http://localhost/superdiemdanh/');
+				//echo form_error('username');
+				$this->load->view('index');
+		}
+		else
+		{
+			if( $this->admin->admin_login($this->input->post('username'),$this->input->post('password'))==1)
+					redirect('control/dashboard');
+					
+					//echo $this->admin->admin_login($this->input->post('username'),$this->input->post('password'));
+
+		}
+	}
+
 
 }
