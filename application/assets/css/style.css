@@ -1,6 +1,21 @@
 .nav-custom .btn-sidebar {
   border-radius: 0; }
 
+.btn-diemdanh {
+  cursor: pointer;
+  text-align: center;
+  padding: 9px 15px 9px 15px;
+  border-radius: 0;
+  color: #fff !important;
+  background: #008eff; }
+  .btn-diemdanh:hover {
+    text-decoration: none;
+    background-color: #14a2ff; }
+  .btn-diemdanh:active {
+    position: relative;
+    top: 1px;
+    color: #008eff; }
+
 .login-body {
   background-color: #008eff; }
   .login-body .card-login {
@@ -21,8 +36,6 @@
         border: none;
         border-bottom: 2px solid #008eff;
         border-color: none; }
-        .login-body .card-login .form-control:focus .avatar {
-          border: 2px solid #008eff; }
   .login-body .btn-login {
     cursor: pointer;
     text-align: center;

@@ -15,6 +15,9 @@
 $(document).ready(function() {
     
     $('#example').DataTable( {
+        "language": {
+            "url": "../application/assets/css/vietnam.json"
+        },
         "ajax": 'get',
         "columns": [
             { "data": "mssv" },
