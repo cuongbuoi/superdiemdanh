@@ -1,12 +1,11 @@
 <table id="example" class="display responsive nowrap" cellspacing="0" width="100%">
     <thead>
         <tr>
-            <th>Tên</th>
-            <th>Position</th>
-            <th>Office</th>
-            <th>Extn.</th>
-            <th>Start date</th>
-            <th>Salary</th>
+            <th>Mssv</th>
+            <th>Họ và Tên</th>
+            <th>Giới Tính</th>
+            <th>Lớp</th>
+            <th>Thao tác</th>
         </tr>
     </thead>
 </table>
@@ -16,14 +15,14 @@
 $(document).ready(function() {
     
     $('#example').DataTable( {
-        "ajax": 'cc',
+        "ajax": 'get',
         "columns": [
-            { "data": "name" },
-            { "data": "position" },
-            { "data": "office" },
-            { "data": "extn" },
-            { "data": "start_date" },
-            { "data": "salary" }
+            { "data": "mssv" },
+            { "data": "hoten" },
+            { "data": "gioitinh" },
+            { "data": "malop" },
+            { "data": "0" }
+           // { "data": "salary" }
         ]
     } );
 } );

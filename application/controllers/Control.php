@@ -60,6 +60,9 @@ class Control extends CI_Controller {
 				$this->session->unset_userdata('admin');
 				redirect('http://localhost/superdiemdanh/');
 			}
+			else{
+				REDIRECT("http://localhost/superdiemdanh/");
+			}
 		}
   public function admin()
     {
@@ -601,6 +604,18 @@ class Control extends CI_Controller {
 			  }
 			]
 		  }';
+	}
+	public function get()
+	{
+		$data=$this->admin->get_value();
+		$push=array();
+		foreach($data as $key=>$value)
+		{
+		    array_push($data[$key],'<button id="btn-login" type="button" class="btn btn-primary btn-login float-right">Điểm danh</button>');
+		}
+		$re=array("data"=>$data);
+		
+	 echo	json_encode($re,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
 	}
 
 }

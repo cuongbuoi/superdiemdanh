@@ -16,5 +16,10 @@ class Admin extends CI_Model
         else
             return 0;
     }
+    public function get_value()
+    {
+        $data=$this->db->get('sinhvien')->result_array();
+        return $data;
+    }
 }
 ?>
