@@ -1,5 +1,10 @@
+@import "https://fonts.googleapis.com/css?family=Montserrat";
 .nav-custom .btn-sidebar {
   border-radius: 0; }
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: #fafafa; }
 
 .btn-diemdanh {
   cursor: pointer;
@@ -15,6 +20,9 @@
     position: relative;
     top: 1px;
     color: #008eff; }
+
+.chonmon {
+  margin-bottom: 30px; }
 
 .login-body {
   background-color: #008eff; }

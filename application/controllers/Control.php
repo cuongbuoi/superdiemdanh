@@ -76,6 +76,17 @@ class Control extends CI_Controller {
 		$this->load->view('dashboard',$data);
 	}
 
+	public function dashboard2(){
+		if($this->session->userdata('admin') == '')
+		{
+			redirect('http://localhost/superdiemdanh/');
+		}
+		$data['header']='module/navbar';
+		$data['sidebar']='module/sidebar';
+		$data['diemdanh']='module/nhapdiem-content';
+		$this->load->view('dashboard',$data);
+	}
+
 	public function get()
 	{
 		$data=$this->admin->get_value();
