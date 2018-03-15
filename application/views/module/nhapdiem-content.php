@@ -19,6 +19,7 @@
                 <th>Họ và Tên</th>
                 <th>Giới Tính</th>
                 <th>Lớp</th>
+                <th>Buổi vắng</th>
                 <th>Thao tác</th>
             </tr>
         </thead>

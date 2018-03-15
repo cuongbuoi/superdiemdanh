@@ -2,24 +2,29 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Admin extends CI_Model
 {
-    
-    public function admin_login($id,$pass)
+    function __construct()
     {
-       $data= $this->db->where(array('id'=>$id,'pass'=>$pass))->get('admin')->result_array();
-        if(count($data)==1)
+        parent::__construct();
+        if($this->session->userdata('admin') == '')
         {
-            //$this->session->set_userdata('admin','123');
-            $newdata =array('admin'=>$id);
-           $this->session->set_userdata($newdata);
-           return 1;
+            redirect(base_url().'superdiemdanh/');
         }
-        else
-            return 0;
     }
     public function get_value()
-    {
-        $data=$this->db->get('sinhvien')->result_array();
+    { 
+        $count = array('sinhvien.mssv',
+        'sinhvien.hoten',
+        'gioitinh',
+        'lop.tenlop as lop',
+        'count(buoivang) as bv');
+        $data=$this->db->select($count)->from('sinhvien')->join('buoivang','sinhvien.mssv = buoivang.mssv','left')->join('lop','lop.malop = sinhvien.malop')->group_by('sinhvien.mssv')->get()->result_array();
         return $data;
+    }
+
+
+    public function deodihoc()
+    {
+        $id = $this->input->post('mss');
     }
 }
 ?>

@@ -20,6 +20,45 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		$this->load->model('login');
+		if($this->input->post('action'))
+		{
+		
+			$config = array(
+				array(
+								'field' => 'username',
+								'label' => 'Username',
+								'rules' => 'required',
+								'errors' => array(
+									'required' => 'Tài khoản không được để trống',
+					),
+				),
+				array(
+								'field' => 'password',
+								'label' => 'Password',
+								'rules' => 'required',
+								'errors' => array(
+												'required' => 'Mật khẩu không được để trống',
+								),
+				)
+			);
+			$this->form_validation->set_rules($config);
+			if ($this->form_validation->run() == FALSE)
+			{	
+					$this->load->view('index');
+			}
+			else
+			{
+				if( $this->login->admin_login($this->input->post('username'),$this->input->post('password'))==1)
+						redirect(base_url().'superdiemdanh/control/dashboard');
+				else{
+							$this->session->set_flashdata('error','Sai tài khoản hoặc mật khẩu');
+							redirect(base_url().'superdiemdanh/');
+				}
+
+			}
+		}
+		else
+			$this->load->view('index');
 	}
 }

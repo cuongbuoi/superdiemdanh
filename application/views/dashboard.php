@@ -19,6 +19,10 @@
     <script src="../application/assets/js/responsiveDTTB.js"></script>
     <style type="text/css">
         div.container { max-width: 1200px }
+        td:nth-child(5){
+            text-align:center;
+
+        }
     </style>
 </head>
 <body>
