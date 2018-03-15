@@ -12,17 +12,38 @@ body {
   padding: 9px 15px 9px 15px;
   border-radius: 0;
   color: #fff !important;
-  background: #008eff; }
+  background: #c70000; }
   .btn-diemdanh:hover {
     text-decoration: none;
-    background-color: #14a2ff; }
+    background-color: #db1414; }
   .btn-diemdanh:active {
+    position: relative;
+    top: 1px;
+    color: #c70000; }
+
+.btn-nhapdiem {
+  cursor: pointer;
+  text-align: center;
+  padding: 9px 15px 9px 15px;
+  border-radius: 0;
+  color: #fff !important;
+  background: #008eff; }
+  .btn-nhapdiem:hover {
+    text-decoration: none;
+    background-color: #14a2ff; }
+  .btn-nhapdiem:active {
     position: relative;
     top: 1px;
     color: #008eff; }
 
 .chonmon {
   margin-bottom: 30px; }
+
+#save, .info {
+  display: none; }
+
+table-editable {
+  position: relative; }
 
 .login-body {
   background-color: #008eff; }

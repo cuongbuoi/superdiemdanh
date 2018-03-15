@@ -1,32 +1,31 @@
 
 <div class="row control">
-<div class="chonmon col-md-6">
-    <form action="http://localhost/superdiemdanh/" method="post">
-        <div class="form-group">
-            <label>Chọn môn</label>
-            <select class="form-control">
-                <option>Lập trình Java</option>
-                <option>Lập trình C#</option>
-                <option>Lập trình Android</option>
-                <option>Lập trình hướng đối tượng</option>
-            </select>
-        </div>
-    </form>
-</div>
-<div class="chonmon col-md-6">
-    <form action="http://localhost/superdiemdanh/" method="post">
-        <div class="form-group">
-            <label>Chọn lớp</label>
-            <select class="form-control">
-                <option>Hệ thống thông tin</option>
-                <option>Khoa học máy tính</option>
-                <option>Công nghệ phần mềm</option>
-               
-            </select>
-        </div>
-    </form>
-</div>
-
+    <div class="chonmon col-md-6">
+        <form action="http://localhost/superdiemdanh/" method="post">
+            <div class="form-group">
+                <label>Chọn môn</label>
+                <select class="form-control">
+                    <option>Lập trình Java</option>
+                    <option>Lập trình C#</option>
+                    <option>Lập trình Android</option>
+                    <option>Lập trình hướng đối tượng</option>
+                </select>
+            </div>
+        </form>
+    </div>
+    <div class="chonmon col-md-6">
+        <form action="http://localhost/superdiemdanh/" method="post">
+            <div class="form-group">
+                <label>Chọn lớp</label>
+                <select class="form-control">
+                    <option>Hệ thống thông tin</option>
+                    <option>Khoa học máy tính</option>
+                    <option>Công nghệ phần mềm</option>
+                
+                </select>
+            </div>
+        </form>
+    </div>
 </div>
 <DIV class="diemdanh">
     <table id="example" class="display responsive nowrap" cellspacing="0" width="100%">

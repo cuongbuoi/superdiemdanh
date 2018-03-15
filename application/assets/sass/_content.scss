@@ -6,8 +6,18 @@ body {
     background: #fafafa;
 }
 .btn-diemdanh{
+    @include button($red, #fff);
+}
+.btn-nhapdiem{
     @include button($blue, #fff);
 }
 .chonmon{
     margin-bottom: 30px;
 }
+#save, .info {
+    display: none;
+  }
+  table-editable {
+    position: relative;
+  }
+  
