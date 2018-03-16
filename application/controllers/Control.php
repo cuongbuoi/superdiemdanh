@@ -40,6 +40,16 @@ class Control extends CI_Controller {
 		$data['diemdanh']='module/nhapdiem-content';
 		$this->load->view('dashboard',$data);
 	}
+	public function dashboard3(){
+		if($this->session->userdata('admin') == '')
+		{
+			redirect(base_url() .'superdiemdanh/');
+		}
+		$data['header']='module/navbar';
+		$data['sidebar']='module/sidebar';
+		$data['diemdanh']='module/thongke-content';
+		$this->load->view('dashboard',$data);
+	}
 
 	public function get()
 	{
@@ -53,6 +63,10 @@ class Control extends CI_Controller {
 		$re=array("data"=>$data);
 		
 	 echo	json_encode($re,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
+	}
+	public function checkurl()
+	{
+		echo $this->uri->segment(2);
 	}
 
 }

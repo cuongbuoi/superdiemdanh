@@ -11,9 +11,9 @@
    <link href="../application/assets/css/sidebar.css" rel="stylesheet" type="text/css" />
    <link href="../application/assets/css/datatables.min.css" rel="stylesheet" type="text/css" />
    <link href="../application/assets/css/responsiveDTTB.css" rel="stylesheet" type="text/css" />
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link href="../application/assets/css/font-awesome.css" rel="stylesheet" type="text/css" />
     <script src="../application/assets/js/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="../application/assets/js/popper.js" crossorigin="anonymous"></script>
     <script src="../application/assets/js/bootstrap.min.js"></script>
     <script src="../application/assets/js/datatables.min.js"></script>
     <script src="../application/assets/js/responsiveDTTB.js"></script>

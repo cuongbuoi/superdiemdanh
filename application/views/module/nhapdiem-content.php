@@ -31,38 +31,43 @@
     </div>
 </div>
 <div class="bangdiem">
-<table class="table">
-      <tr>
-      <th>Họ và Tên</th>
-            <th>MSSV</th>
-            <th>Giới Tính</th>
-            <th>Lớp</th>
-            <th>Buổi Vắng</th>
-            <th>Thao tác</th>
-      </tr>
-      <tr>
-        <td contenteditable="true">15C4801040069</td>
-        <td contenteditable="true">Nguyễn Trường Thuận</td>
-        <td contenteditable="true">Bê đê</td>
-        <td contenteditable="true">HTTT</td>
-        <td contenteditable="true">10</td>
-        <td>
-          <button class="table-remove btn btn-danger btn-diemdanh">Xóa</button>
-        </td>
-      </tr>
-      <!-- This is our clonable table line -->
-      <tr class="hide">
-      <td contenteditable="true">15C4801040069</td>
-        <td contenteditable="true">Nguyễn Trường Thuận</td>
-        <td contenteditable="true">Bê đê</td>
-        <td contenteditable="true">HTTT</td>
-        <td contenteditable="true">10</td>
-        <td>
-          <button class="table-remove btn btn-danger btn-diemdanh">Xóa</button>
-        </td>
-      </tr>
-    </table>
-
+    <div class="table-responsive">
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th>Họ và Tên</th>
+                    <th>MSSV</th>
+                    <th>Giới Tính</th>
+                    <th>Lớp</th>
+                    <th>Buổi Vắng</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td contenteditable="true">15C4801040069</td>
+                    <td contenteditable="true">Nguyễn Trường Thuận</td>
+                    <td contenteditable="true">Bê đê</td>
+                    <td contenteditable="true">HTTT</td>
+                    <td contenteditable="true">10</td>
+                    <td>
+                    <button class="table-remove btn btn-danger btn-diemdanh">Xóa</button>
+                    </td>
+                </tr>
+                <!-- This is our clonable table line -->
+                <tr class="hide">
+                <td contenteditable="true">15C4801040069</td>
+                    <td contenteditable="true">Nguyễn Trường Thuận</td>
+                    <td contenteditable="true">Bê đê</td>
+                    <td contenteditable="true">HTTT</td>
+                    <td contenteditable="true">10</td>
+                    <td>
+                    <button class="table-remove btn btn-danger btn-diemdanh">Xóa</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     <script>
         $(document).ready(function() {
             var $TABLE = $('#table');
@@ -117,7 +122,7 @@
             });
             
             // Output the result
-            $EXPORT.text(JSON.stringify(data));
+            alert(data);
             }); 
         });
     </script>

@@ -10,24 +10,26 @@
     </div>
 
     <ul class="list-unstyled components">
-        <li class="active">
-            <a href="#diemdanh" data-toggle="collapse" aria-expanded="false">Điểm danh <i class="dropdown-toggle float-right"></i></a>
+        <li <?php if($this->uri->segment(2)=="dashboard") echo  'class="active"'; ?>>
+            <!-- <a href="#diemdanh" data-toggle="collapse" aria-expanded="false">Điểm danh <i class="dropdown-toggle float-right"></i></a>
             <ul class="collapse list-unstyled" id="diemdanh">
                 <li><a href="#">Điểm danh 1</a></li>
                 <li><a href="#">Điểm danh 2</a></li>
                 <li><a href="#">Điểm danh 3</a></li>
-            </ul>
+            </ul> -->
+            <a href="<?php echo base_url().'superdiemdanh/control/dashboard'; ?>">Điểm danh</a>
         </li>
-        <li>
-            <a href="#nhapdiem" data-toggle="collapse" aria-expanded="false">Nhập điểm <i class="dropdown-toggle float-right"></i></a>
+        <li <?php if($this->uri->segment(2)=="dashboard2") echo  'class="active"'; ?>>
+            <!-- <a href="#nhapdiem" data-toggle="collapse" aria-expanded="false">Nhập điểm <i class="dropdown-toggle float-right"></i></a>
             <ul class="collapse list-unstyled" id="nhapdiem">
                 <li><a href="#">Nhập điểm 1</a></li>
                 <li><a href="#">Nhập điểm 2</a></li>
                 <li><a href="#">Nhập điểm 3</a></li>
-            </ul>
+            </ul> -->
+            <a  href="<?php echo base_url().'superdiemdanh/control/dashboard2'; ?>">Nhập điểm</a>
         </li>
-        <li>
-            <a href="#">Thống kê, báo cáo</a>
+        <li <?php if($this->uri->segment(2)=="dashboard3") echo  'class="active"'; ?>>
+            <a href="<?php echo base_url().'superdiemdanh/control/dashboard3'; ?>">Thống kê, báo cáo</a>
         </li>
     </ul>
 </nav>
