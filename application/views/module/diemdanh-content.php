@@ -43,7 +43,23 @@
 </DIV>
 
 <script>
-    
+
+
+function diemdanh(id)
+{
+    if(!is_null(id))
+    {
+        $.ajax({
+            type: "",
+            url: "url",
+            data: "data",
+            dataType: "dataType",
+            success: function (response) {
+                
+            }
+        });
+    }
+}
 $(document).ready(function() {
     
     $('#example').DataTable( {
@@ -61,5 +77,7 @@ $(document).ready(function() {
            // { "data": "salary" }
         ]
     } );
-} );
+} )
+ 
+
 </script>

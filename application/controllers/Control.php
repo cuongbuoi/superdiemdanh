@@ -38,6 +38,7 @@ class Control extends CI_Controller {
 		$data['header']='module/navbar';
 		$data['sidebar']='module/sidebar';
 		$data['diemdanh']='module/nhapdiem-content';
+		$data['class']=$this->admin->get_class();
 		$this->load->view('dashboard',$data);
 	}
 	public function dashboard3(){
@@ -58,15 +59,53 @@ class Control extends CI_Controller {
 		$push=array();
 		foreach($data as $key=>$value)
 		{
-		    array_push($data[$key],'<button id="btn-login" type="button" class="btn btn-danger btn-diemdanh">Vắng mặt</button>');
+		    array_push($data[$key],'<button type="button" onclick="diemdanh(\''.$value['mssv'].'\')" class="btn btn-danger btn-diemdanh">Vắng mặt</button>');
 		}
 		$re=array("data"=>$data);
 		
 	 echo	json_encode($re,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
 	}
-	public function checkurl()
+	public function get_table()
 	{
-		echo $this->uri->segment(2);
+		$data=$this->admin->deocandiem($this->input->post('class'),$this->input->post('mon'));
+		$t="";
+		foreach($data as $value)
+		{
+			$t.="<tr>
+				<td>".$value['hoten']."</td>
+				<td>".$value['mssv']."</td>
+				<td>".$value['tenlop']."</td>
+				<td>".$value['tenmonhoc']."</td>
+				<td>".$value['diem1']."</td>
+				<td>".$value['diem2']."</td>
+				<td>".$value['diem3']."</td>
+				</tr>";
+		}
+		echo $t;
+	}
+	public function edit_mark(){
+		$diem2=$this->input->post('diem2')!='' ? $this->input->post('diem2'): 0;
+		$diem3=$this->input->post('diem3')!='' ? $this->input->post('diem3'): 0;
+		if((floatval($diem2)>=0 && floatval($diem2)<=10) && (floatval($diem3)>=0 && floatval($diem3)<=10)){
+		
+			if($this->admin->edit_mark($this->input->post('mssv'),$diem2,$diem3)){
+				echo "1";
+			}
+			else
+				echo "0";
+		}
+		else{
+			echo "0";
+		}
+	}
+	public function get_sub()
+	{
+		$data=$this->admin->get_sub('HTTT');
+		$t="";
+		foreach($data as $value){
+			$t.= "<option value='".$value["idmonhoc"]."'>".$value["tenmonhoc"]."</option>";
+		}
+		echo $t;
 	}
 
 }
