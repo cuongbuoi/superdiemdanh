@@ -49,8 +49,8 @@
     </div>
     <script src="../application/assets/js/jquery.tabledit.js"></script>
     <script>
-    $( document ).ready(function() {
-       var idclass= $('#lop').val()
+    function sub(){
+        var idclass= $('#lop').val()
        $.ajax({
            type: "post",
            url: "get_sub",
@@ -59,7 +59,13 @@
                $('.tt').html(response)
            }
        });
+    }
+    $( document ).ready(function() {
+      sub()
     });
+    $('#lop').on('change', function() {
+         sub()
+    })
    function get(){
        var idclass=$('#lop').val()
        var idmon=$('#mon').val()

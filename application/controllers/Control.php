@@ -100,7 +100,7 @@ class Control extends CI_Controller {
 	}
 	public function get_sub()
 	{
-		$data=$this->admin->get_sub('HTTT');
+		$data=$this->admin->get_sub($this->input->post('id'));
 		$t="";
 		foreach($data as $value){
 			$t.= "<option value='".$value["idmonhoc"]."'>".$value["tenmonhoc"]."</option>";
