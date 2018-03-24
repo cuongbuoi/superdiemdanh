@@ -45,6 +45,85 @@ body {
 table-editable {
   position: relative; }
 
+.widget-thongke .so {
+  font-weight: lighter;
+  font-size: 40px;
+  margin: 0;
+  color: #fff; }
+.widget-thongke .noidung {
+  color: #fff;
+  margin: 0; }
+.widget-thongke .widget-do {
+  text-align: center;
+  padding: 9px 15px 9px 15px;
+  border-radius: 0;
+  border: none;
+  color: #fff !important;
+  background: #c70000; }
+  .widget-thongke .widget-do:hover {
+    text-decoration: none;
+    background-color: #db1414; }
+.widget-thongke .widget-xanh {
+  text-align: center;
+  padding: 9px 15px 9px 15px;
+  border-radius: 0;
+  border: none;
+  color: #fff !important;
+  background: #008eff; }
+  .widget-thongke .widget-xanh:hover {
+    text-decoration: none;
+    background-color: #14a2ff; }
+.widget-thongke .widget-cam {
+  text-align: center;
+  padding: 9px 15px 9px 15px;
+  border-radius: 0;
+  border: none;
+  color: #fff !important;
+  background: #FF5722; }
+  .widget-thongke .widget-cam:hover {
+    text-decoration: none;
+    background-color: #ff6b36; }
+.widget-thongke .widget-hong {
+  text-align: center;
+  padding: 9px 15px 9px 15px;
+  border-radius: 0;
+  border: none;
+  color: #fff !important;
+  background: #E91E63; }
+  .widget-thongke .widget-hong:hover {
+    text-decoration: none;
+    background-color: #fd3277; }
+.widget-thongke .widget-vang {
+  text-align: center;
+  padding: 9px 15px 9px 15px;
+  border-radius: 0;
+  border: none;
+  color: #fff !important;
+  background: #FFEB3B; }
+  .widget-thongke .widget-vang:hover {
+    text-decoration: none;
+    background-color: #ffff4f; }
+.widget-thongke .widget-xanhdam {
+  text-align: center;
+  padding: 9px 15px 9px 15px;
+  border-radius: 0;
+  border: none;
+  color: #fff !important;
+  background: #3F51B5; }
+  .widget-thongke .widget-xanhdam:hover {
+    text-decoration: none;
+    background-color: #5365c9; }
+.widget-thongke .widget-tim {
+  text-align: center;
+  padding: 9px 15px 9px 15px;
+  border-radius: 0;
+  border: none;
+  color: #fff !important;
+  background: #9C27B0; }
+  .widget-thongke .widget-tim:hover {
+    text-decoration: none;
+    background-color: #b03bc4; }
+
 .login-body {
   background-color: #008eff; }
   .login-body .card-login {

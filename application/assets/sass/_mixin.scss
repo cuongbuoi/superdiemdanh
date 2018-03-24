@@ -9,7 +9,7 @@
       box-shadow: $top $left $blur $color;
     }
   }
-  @mixin button($color: $red, $text_color: $white) {
+  @mixin button($color, $text_color) {
     cursor: pointer;
     text-align: center;
     padding: 9px 15px 9px 15px;
@@ -24,6 +24,18 @@
         position: relative;
         top: 1px;
         color: saturate($color, 15%);
+        }
+  }
+  @mixin widget($color, $text_color) {
+    text-align: center;
+    padding: 9px 15px 9px 15px;
+    border-radius: 0;
+    border:none;
+    color: $text_color !important;
+    background: $color;
+        &:hover {
+        text-decoration: none;
+        background-color: $color+20;
         }
   }
   @mixin css-triangle($color, $direction, $size: 6px, $position: absolute, $round: false){

@@ -20,4 +20,37 @@ body {
   table-editable {
     position: relative;
   }
+.widget-thongke{
+    .so{
+        font-weight: lighter;
+        font-size: 40px;
+        margin: 0;
+        color: #fff;
+    }
+    .noidung{
+        color: #fff;
+        margin: 0;
+    }
+    .widget-do{
+        @include widget($red,#fff);
+    }
+    .widget-xanh{
+        @include widget($blue,#fff);
+    }
+    .widget-cam{
+        @include widget($orange,#fff);
+    }
+    .widget-hong{
+        @include widget($pink,#fff);
+    }
+    .widget-vang{
+        @include widget($yellow,#fff);
+    }
+    .widget-xanhdam{
+        @include widget($indigo,#fff);
+    }
+    .widget-tim{
+        @include widget($purple,#fff);
+    }
+}
   
