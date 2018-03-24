@@ -3,12 +3,11 @@
     <div class="chonmon col-md-6">
         <form action="http://localhost/superdiemdanh/" method="post">
             <div class="form-group">
-                <label>Chọn môn</label>
-                <select class="form-control">
-                    <option>Lập trình Java</option>
-                    <option>Lập trình C#</option>
-                    <option>Lập trình Android</option>
-                    <option>Lập trình hướng đối tượng</option>
+                <label>Chọn lớp</label>
+                <select id="lop" class="form-control">
+                <?php foreach ($class as $value){ ?>
+                    <option value="<?php echo $value['malop']; ?>"><?php echo $value['tenlop']; ?></option>
+                <?php } ?>
                 </select>
             </div>
         </form>
@@ -16,8 +15,8 @@
     <div class="chonmon col-md-6">
         <form action="http://localhost/superdiemdanh/" method="post">
             <div class="form-group">
-                <label>Chọn lớp</label>
-                <select class="form-control">
+                <label>Chọn môn</label>
+                <select id="mon" class="form-control tt">
                     <option>Hệ thống thông tin</option>
                     <option>Khoa học máy tính</option>
                     <option>Công nghệ phần mềm</option>
@@ -25,6 +24,11 @@
                 </select>
             </div>
         </form>
+    </div>
+    <div class="col-md-12">
+            <div class="nut float-right mb-3" >
+                <button class="btn btn-primary btn-nhapdiem" id="diemdanh" ><span class="glyphicon glyphicon-edit"></span> Nhập điểm</button>
+            </div>
     </div>
 </div>
 <DIV class="diemdanh">
@@ -43,30 +47,54 @@
 </DIV>
 
 <script>
+ function sub(){
+        var idclass= $('#lop').val()
+       $.ajax({
+           type: "post",
+           url: "get_sub",
+           data: {"id":idclass},
+           success: function (response) {
+               $('.tt').html(response)
+           }
+       });
+    }
+    $('#lop').on('change', function() {
+         sub()
+    });
+    $( document ).ready(function() {
+      sub()
+    });
 
 
 function diemdanh(id)
 {
-    if(!is_null(id))
+    var idclass=$('#lop').val()
+       var idmon=$('#mon').val()
+    if(id != "")
     {
         $.ajax({
-            type: "",
-            url: "url",
-            data: "data",
-            dataType: "dataType",
+            type: "POST",
+            url: "diemdanh",
+            data: {"mssv":id,
+                    "idmon":idmon},
             success: function (response) {
-                
+              
+               get_table(idclass,idmon)
             }
         });
     }
 }
-$(document).ready(function() {
-    
-    $('#example').DataTable( {
+function get(){
+       var malop=$('#lop').val()
+       var mamon=$('#mon').val()
+       $('#example').DataTable( {
         "language": {
             "url": "../application/assets/css/vietnam.json"
         },
         "ajax": 'get',
+        "type":"post",
+        "data":{"malop":malop,"mamon":mamon
+        },
         "columns": [
             { "data": "hoten" },
             { "data": "mssv" },
@@ -74,9 +102,49 @@ $(document).ready(function() {
             { "data": "lop" },
             {"data": "bv"},
             { "data": "0" }
-           // { "data": "salary" }
         ]
     } );
+
+}
+
+
+function get_table(idclass,idmon)
+{
+    
+    $('#example').DataTable( {
+        destroy: true,
+        "language": {
+            "url": "../application/assets/css/vietnam.json"
+        },
+        "ajax": {
+            "url": "get",
+            "type": "POST",
+            "data":{"malop":idclass,
+                    "mamon":idmon
+            }
+        },
+        "columns": [
+            { "data": "hoten" },
+            { "data": "mssv" },
+            { "data": "gioitinh" },
+            { "data": "tenlop" },
+            {"data": "bv"},
+            { "data": "0" }
+        ]
+    } );
+
+    
+}
+$(document).ready(function() {
+    $("#diemdanh").click(function (e) {
+
+        var lop = $("#lop").val();
+        var mon = $("#mon").val();
+        get_table(lop,mon)
+        e.preventDefault();
+        
+    });
+    
 } )
  
 

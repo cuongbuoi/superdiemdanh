@@ -27,6 +27,7 @@ class Control extends CI_Controller {
 		$data['header']='module/navbar';
 		$data['sidebar']='module/sidebar';
 		$data['diemdanh']='module/diemdanh-content';
+		$data['class']=$this->admin->get_class();
 		$this->load->view('dashboard',$data);
 	}
 
@@ -54,16 +55,19 @@ class Control extends CI_Controller {
 
 	public function get()
 	{
+		if($this->input->post('malop')&&$this->input->post('mamon')){
+
 		
-		$data=$this->admin->get_value();
-		$push=array();
-		foreach($data as $key=>$value)
-		{
-		    array_push($data[$key],'<button type="button" onclick="diemdanh(\''.$value['mssv'].'\')" class="btn btn-danger btn-diemdanh">Vắng mặt</button>');
+			$data=$this->admin->get_value($this->input->post('malop'),$this->input->post('mamon'));
+			$push=array();
+			foreach($data as $key=>$value)
+			{
+				array_push($data[$key],'<button type="button" onclick="diemdanh(\''.$value['mssv'].'\')" class="btn btn-danger btn-diemdanh">Vắng mặt</button>');
+			}
+			$re=array("data"=>$data);
+			
+			echo	json_encode($re,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
 		}
-		$re=array("data"=>$data);
-		
-	 echo	json_encode($re,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
 	}
 	public function get_table()
 	{
@@ -106,6 +110,23 @@ class Control extends CI_Controller {
 			$t.= "<option value='".$value["idmonhoc"]."'>".$value["tenmonhoc"]."</option>";
 		}
 		echo $t;
+	}
+
+	public function diemdanh()
+    {
+		$mssv = $this->input->post('mssv');
+		$mon = $this->input->post("idmon");
+		$this->admin->diemdanh($mssv,$mon);
+		echo 'ok';
+	}
+	public function study()
+	{
+	
+		if($this->admin->study('HTTT','1'))
+			echo "ahihi";
+		else
+			echo "ahuhu";
+		
 	}
 
 }

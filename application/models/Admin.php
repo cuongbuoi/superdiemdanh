@@ -10,14 +10,15 @@ class Admin extends CI_Model
             redirect(base_url().'superdiemdanh/');
         }
     }
-    public function get_value()
+    public function get_value($malop,$mamon)
     { 
-        $count = array('sinhvien.mssv',
-        'sinhvien.hoten',
-        'gioitinh',
-        'lop.tenlop as lop',
-        'count(buoivang) as bv');
-        $data=$this->db->select($count)->from('sinhvien')->join('buoivang','sinhvien.mssv = buoivang.mssv','left')->join('lop','lop.malop = sinhvien.malop')->group_by('sinhvien.mssv')->get()->result_array();
+        // $count = array('sinhvien.mssv',
+        // 'sinhvien.hoten',
+        // 'gioitinh',
+        // 'lop.tenlop as lop',
+        // 'count(buoivang.mssv) as bv'
+        // );
+        $data=$this->db->query('SELECT DISTINCT sinhvien.mssv,sinhvien.hoten,sinhvien.gioitinh,lop.tenlop,monhoc.tenmonhoc, t1.bv as bv from sinhvien join lop on sinhvien.malop=lop.malop join diemdanh on sinhvien.mssv = diemdanh.mssv join monhoc on diemdanh.idmonhoc=monhoc.id left join (select mssv,count(mssv) as bv from buoivang where idmonhoc="'.$mamon.'" GROUP by buoivang.mssv) as t1 on sinhvien.mssv = t1.mssv where diemdanh.malop="'.$malop.'" and diemdanh.idmonhoc="'.$mamon.'"')->result_array();
         return $data;
     }
 
@@ -45,6 +46,30 @@ class Admin extends CI_Model
     {
         return $this->db->query("update diemdanh set diem2='{$diem2}' , diem3='{$diem3}' where mssv='{$id}'");
     }
+
+    public function diemdanh($mssv,$mon)
+    {
+        $data = array("mssv"=>$mssv,"idmonhoc"=>$mon,"buoivang" => date("d/m/Y"));
+        $this->db->insert("buoivang",$data);
+        $this->db->set('diem1','diem1-1',false);
+        $this->db->where('mssv',$mssv);
+        $this->db->where('idmonhoc',$mon);
+        $this->db->where('diem1>','0');
+        $this->db->update('diemdanh');
+    }
+    public function study($malop,$mamon)
+    {
+         $sv=$this->db->select('mssv,malop')->from('sinhvien')->where('malop',$malop)->get()->result_array();
+       
+         foreach ($sv as $key=>$value)
+         {
+             $sv[$key]['idmonhoc']=$mamon;
+         }
+         return $this->db->insert_batch('diemdanh',$sv)? true:false;
+
+     }
+
+  
 
 }
 ?>
