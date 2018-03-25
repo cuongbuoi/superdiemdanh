@@ -69,6 +69,8 @@ function thongbao(title,text,info){
 
 
 }
+
+
  function sub(){
         var idclass= $('#lop').val()
        $.ajax({
@@ -103,7 +105,8 @@ function diemdanh(id)
                 if($.trim(response) == 'ok')
                 {
                     thongbao('Thông báo','Đã điểm danh','success')
-                    $('#example').DataTable().ajax.reload();
+                    $('#example').DataTable().ajax.reload('',false);
+                     
                 }
                 else{
                     thongbao('Thông báo','Đã điểm danh hôm nay','error')
@@ -139,7 +142,7 @@ function get(){
 
 function get_table(idclass,idmon)
 {
-    
+
     $('#example').DataTable( {
         // destroy: true,
         "language": {
@@ -168,11 +171,14 @@ function get_table(idclass,idmon)
 
 
 $(document).ready(function() {
+    var page_tab = 0;
     $("#diemdanh").click(function (e) {
 
         var lop = $("#lop").val();
         var mon = $("#mon").val();
         get_table(lop,mon)
+        
+        
         e.preventDefault();
         
     });
