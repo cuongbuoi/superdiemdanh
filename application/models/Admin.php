@@ -49,13 +49,25 @@ class Admin extends CI_Model
 
     public function diemdanh($mssv,$mon)
     {
-        $data = array("mssv"=>$mssv,"idmonhoc"=>$mon,"buoivang" => date("d/m/Y"));
-        $this->db->insert("buoivang",$data);
-        $this->db->set('diem1','diem1-1',false);
-        $this->db->where('mssv',$mssv);
-        $this->db->where('idmonhoc',$mon);
-        $this->db->where('diem1>','0');
-        $this->db->update('diemdanh');
+        
+            $data = array("mssv"=>$mssv,"idmonhoc"=>$mon,"buoivang" => date("d/m/Y"));
+            if($this->db->insert("buoivang",$data))
+            {
+            $this->db->set('diem1','diem1-1',false);
+            $this->db->where('mssv',$mssv);
+            $this->db->where('idmonhoc',$mon);
+            $this->db->where('diem1>','0');
+            $this->db->update('diemdanh');
+            return true;
+            }
+            else{
+                return false;
+            }
+          
+            return false;
+        
+      
+       
     }
     public function study($malop,$mamon)
     {

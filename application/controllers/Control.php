@@ -114,10 +114,19 @@ class Control extends CI_Controller {
 
 	public function diemdanh()
     {
+		
 		$mssv = $this->input->post('mssv');
 		$mon = $this->input->post("idmon");
-		$this->admin->diemdanh($mssv,$mon);
-		echo 'ok';
+		if($this->admin->diemdanh($mssv,$mon)){
+			echo 'ok';
+		}
+		else{
+			echo 'error';
+		}
+	
+		
+		
+		
 	}
 	public function study()
 	{

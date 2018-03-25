@@ -47,6 +47,28 @@
 </DIV>
 
 <script>
+function thongbao(title,text,info){
+    toastr[info](title, text)
+    toastr.options = {
+  "closeButton": false,
+  "debug": false,
+  "newestOnTop": false,
+  "progressBar": false,
+  "positionClass": "toast-top-right",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "2000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
+
+
+}
  function sub(){
         var idclass= $('#lop').val()
        $.ajax({
@@ -78,8 +100,15 @@ function diemdanh(id)
             data: {"mssv":id,
                     "idmon":idmon},
             success: function (response) {
-              
-               get_table(idclass,idmon)
+                if($.trim(response) == 'ok')
+                {
+                    thongbao('Thông báo','Đã điểm danh','success')
+                    $('#example').DataTable().ajax.reload();
+                }
+                else{
+                    thongbao('Thông báo','Đã điểm danh hôm nay','error')
+                }
+                
             }
         });
     }
@@ -112,7 +141,7 @@ function get_table(idclass,idmon)
 {
     
     $('#example').DataTable( {
-        destroy: true,
+        // destroy: true,
         "language": {
             "url": "../application/assets/css/vietnam.json"
         },
@@ -135,6 +164,9 @@ function get_table(idclass,idmon)
 
     
 }
+
+
+
 $(document).ready(function() {
     $("#diemdanh").click(function (e) {
 
