@@ -104,12 +104,12 @@ class Admin extends CI_Model
 
      public function tylediem()
      {
-        $diem_kem = $this->db->select('count(mssv) as diemkem')->where('(diem1+diem2+(diem2*2))/3 <= 3.5')->from('diemdanh')->get()->result_array();
+        $diem_kem = $this->db->select('count(mssv) as diemkem')->where('(diem1+diem2+(diem3))/3 <= 3.5')->from('diemdanh')->get()->result_array();
 
-         $diem_tb = $this->db->select("count(mssv) as diemtb")->where('(diem1+diem2+(diem2*2))/3 >= 4 and (diem1+diem2+(diem2*2))/3 < 6.5')->from('diemdanh')->get()->result_array();
+         $diem_tb = $this->db->select("count(mssv) as diemtb")->where('(diem1+diem2+(diem3))/3 >= 4 and (diem1+diem2+(diem3))/3 < 6.5')->from('diemdanh')->get()->result_array();
 
-           $diem_kha = $this->db->select("count(mssv) as diemkha")->where('(diem1+diem2+(diem2*2))/3 >= 6.5 and (diem1+diem2+(diem2*2))/3 <=8')->from('diemdanh')->get()->result_array();
-         $diem_gioi = $this->db->select("count(mssv) as diemgioi")->where('(diem1+diem2+(diem2*2))/3 > 8 and (diem1+diem2+(diem2*2))/3 <=10')->from('diemdanh')->get()->result_array();
+           $diem_kha = $this->db->select("count(mssv) as diemkha")->where('(diem1+diem2+(diem3))/3 >= 6.5 and (diem1+diem2+(diem3))/3 <=8')->from('diemdanh')->get()->result_array();
+         $diem_gioi = $this->db->select("count(mssv) as diemgioi")->where('(diem1+diem2+(diem3))/3 > 8 and (diem1+diem2+(diem3))/3 <= 10')->from('diemdanh')->get()->result_array();
 
 
           //return $diem_tb[0]['diemtb'];
