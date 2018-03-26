@@ -30,6 +30,9 @@
             text-align:center;
 
         }
+        #edittable td{
+            width: 50px;
+        }
     </style>
 </head>
 <body>
