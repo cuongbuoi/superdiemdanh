@@ -1,46 +1,12 @@
-<div class="row control">
-    <div class="chonmon col-md-6">
-        <form action="http://localhost/superdiemdanh/" method="post">
-            <div class="form-group">
-                <label>Chọn lớp</label>
-                <select id="lop" class="form-control">
-                <?php foreach ($class as $value){ ?>
-                    <option value="<?php echo $value['malop']; ?>"><?php echo $value['tenlop']; ?></option>
-                <?php } ?>
-                </select>
-            </div>
-        </form>
-    </div>
-    <div class="chonmon col-md-6">
-        <form action="http://localhost/superdiemdanh/" method="post">
-            <div class="form-group">
-                <label>Chọn môn</label>
-                <select id="mon" class="form-control tt">
-       
-                </select>
-            </div>
-        </form>
-    </div>
-    <div class="col-md-12">
-            <div class="nut float-right mb-3" >
-                <button class="btn btn-primary btn-nhapdiem" onclick="get()"><span class="glyphicon glyphicon-edit"></span> Nhập điểm</button>
-            </div>
-    </div>
-</div>
 <div class="bangdiem">
     <div class="table-responsive">
         <table class="table" id="edittable">
             <thead class="thead-light">
                 <tr>
-                    <th>Họ và Tên</th>
-                    <th>MSSV</th>
-                    <th>Lớp</th>
-                    <th>Môn</th>
-                    <th>Điểm 1</th>
-                    <th>Điểm 2</th>
-                    <th>Điểm 3</th>
-                    <th>Điểm TB</th>
-               
+                    <th>ID</th>
+                    <th>Tên học phần</th>
+                    <th>Số tính chỉ</th>
+                    <th>Số tiết</th>                   
                 </tr>
             </thead>
             <tbody id="print">
@@ -50,46 +16,29 @@
     </div>
     <script src="../application/assets/js/jquery.tabledit.js"></script>
     <script>
-
-    function sub(){
-        var idclass= $('#lop').val()
-       $.ajax({
-           type: "post",
-           url: "get_sub",
-           data: {"id":idclass},
-           success: function (response) {
-               $('.tt').html(response)
-           }
-       });
-    }
-    $( document ).ready(function() {
-      sub()
+     function get(){
+            $.ajax({
+                type: "post",
+                url: "quanlymon",
+                data: {
+                    "action":"gettable"
+                },
+                success: function (response) {
+                    $('#print').html(response)
+                    edit()
+                    $(".btn-toolbar").css("display","block");
+                }
+            });
+        }  
+    $(document).ready(function () {
+       get()
     });
-    $('#lop').on('change', function() {
-         sub()
-    })
-   function get(){
-       var idclass=$('#lop').val()
-       var idmon=$('#mon').val()
-       $.ajax({
-           type: "post",
-           url: "get_table",
-           data: {
-               "class":idclass,
-               "mon":idmon
-           },
-           success: function (response) {
-               $('#print').html(response)
-               edit()
-               $(".btn-toolbar").css("display","block");
-           }
-       });
-   }
+  
 
     function edit(){
        
             $('#edittable').Tabledit({
-            url: 'edit_mark',
+            url: 'editmon',
             deleteButton: false,
             saveButton: true,
             autoFocus: false,
@@ -106,12 +55,11 @@
                 }
             },
             columns: {
-                identifier: [1, 'mssv'],
-                editable: [[5, 'diem2'], [6, 'diem3']]
+                identifier: [0, 'id'],
+                editable: [[1, 'tenmonhoc'], [2, 'sotinhchi'], [3, 'sotiet']]
             },
             onSuccess: function(data, textStatus, jqXHR) {
                     get()
-               
                 },
             onFail: function(jqXHR, textStatus, errorThrown) {
                 console.log('onFail(jqXHR, textStatus, errorThrown)');

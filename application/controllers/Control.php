@@ -158,9 +158,33 @@ class Control extends CI_Controller {
 			echo "ahuhu";
 		
 	}
-	public function a()
+	public function quanlymon()
 	{
-		echo base_url();
+		switch($this->input->post('action'))
+		{
+			case "gettable":
+				$data=$this->admin->gettablemonhoc();
+				$t="";
+				foreach($data as $value){
+					$t.="<tr>
+							<td>".$value['id']."</td>
+							<td>".$value['tenmonhoc']."</td>
+							<td>".$value['sotinhchi']."</td>
+							<td>".$value['sotiet']."</td>
+						</tr>";
+				}
+				echo $t;		
+				break;
+			default:
+				break;
+		}		
 	}
+	public function editmon()
+	{
+		$this->admin->editmonhoc($this->input->post('id'),$this->input->post('tenmonhoc'),$this->input->post('sotinhchi'),$this->input->post('sotiet'));
+	}
+
+
+
 
 }

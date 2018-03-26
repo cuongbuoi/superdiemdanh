@@ -80,6 +80,17 @@ class Admin extends CI_Model
          return $this->db->insert_batch('diemdanh',$sv)? true:false;
 
      }
+     public function gettablemonhoc()
+     {
+        return $this->db->get('monhoc')->result_array();
+     }
+     public function editmonhoc($id,$tenmon,$sotc,$sotiet)
+     {
+        $data= array('tenmonhoc'=>$tenmon,'sotinhchi'=>$sotc,'sotiet'=>$sotiet);
+        $this->db->where('id',$id);
+        $this->db->update('monhoc',$data);
+     }
+
 
   
 
