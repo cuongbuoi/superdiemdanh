@@ -144,7 +144,7 @@ function get_table(idclass,idmon)
 {
 
     $('#example').DataTable( {
-        // destroy: true,
+        destroy: true,
         "language": {
             "url": "../application/assets/css/vietnam.json"
         },
