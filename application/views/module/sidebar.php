@@ -32,7 +32,12 @@
             <a href="<?php echo base_url().'superdiemdanh/control/dashboard3'; ?>">Thống kê, báo cáo</a>
         </li>
         <li <?php if($this->uri->segment(2)=="dashboard4") echo  'class="active"'; ?>>
-            <a href="<?php echo base_url().'superdiemdanh/control/dashboard4'; ?>">Quản lý</a>
+            <a href="#quanly" data-toggle="collapse" aria-expanded="false">Quản lý<i class="dropdown-toggle float-right"></i></a>
+            <ul class="collapse list-unstyled" id="quanly">
+                <li><a href="<?php echo base_url().'superdiemdanh/control/dashboard4'; ?>">Quản lý 1</a></li>
+                <li><a href="<?php echo base_url().'superdiemdanh/control/dashboard4'; ?>">Quản lý 2</a></li>
+                <li><a href="<?php echo base_url().'superdiemdanh/control/dashboard4'; ?>">Quản lý 3</a></li>
+            </ul>
         </li>
     </ul>
 </nav>
