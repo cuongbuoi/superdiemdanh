@@ -64,33 +64,44 @@ if(detectmob())
 }
 
 
+    $.ajax({
+        url: 'tylediem',
+        type: 'GET',
+        success: function(res){
+            data = $.parseJSON(res);
+            chart1(data['diem_kem'],data['diem_tb'],data['diem_kha'],data['diem_gioi'])
+        }
+    })
 
-	var container = document.getElementById('chart-area');
+function chart1(diemkem,diemtb,diemkha,diemgioi)
+{
+var container = document.getElementById('chart-area');
 var data = {
     categories: ['Tỉ lệ điểm'],
     series: [
         {
-            name: 'Yếu',
-            data: 46
+            name: 'Khá',
+            data: diemkha
+           
         },
         {
             name: 'Trung Bình',
-            data: 10
+            data: diemtb
         },
          {
-            name: 'Khá',
-            data: 30
+            name: 'Yếu',
+            data: diemkem
         },
          {
             name: 'Giỏi',
-            data: 14
+            data: diemgioi
         }
 
     ]
 };
 var options = {
     chart: {
-       	width: width1,
+        width: width1,
         height: height1,
         title: 'Thống kê tỷ lệ điểm '
     },
@@ -115,6 +126,9 @@ var theme = {
 // options.theme = 'myTheme';
 
 tui.chart.pieChart(container, data, options);
+}
+
+	
 </script>
 
 <script class='code-js' id='code-js'>
@@ -170,10 +184,12 @@ var options = {
 };
 var theme = {
     series: {
-        colors: [
-            '#83b14e', '#458a3f', '#295ba0', '#2a4175', '#289399',
-            '#289399', '#617178', '#8a9a9a', '#516f7d', '#dddddd'
+        column:{
+            colors: [
+            'green','red'
         ]
+        }
+        
     }
 };
 

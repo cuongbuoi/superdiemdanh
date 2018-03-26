@@ -249,6 +249,11 @@ class Control extends CI_Controller {
 	}
 
 
+	public function tylediem()
+	{
+		echo $this->admin->tylediem();
+	}
+
 
 
 }
