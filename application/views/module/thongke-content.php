@@ -78,7 +78,7 @@ var options = {
     chart: {
        	width: 500,
         height: 500,
-        title: 'Thống kê tỷ lệ vắng '
+        title: 'Thống kê tỷ lệ điểm '
     },
     tooltip: {
         suffix: '%'
