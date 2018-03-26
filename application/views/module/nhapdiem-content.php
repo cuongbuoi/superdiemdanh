@@ -50,6 +50,9 @@
     </div>
     <script src="../application/assets/js/jquery.tabledit.js"></script>
     <script>
+      jQuery(document).ready(function($) {
+        $('#sidebar').toggleClass('active');
+      });
     function sub(){
         var idclass= $('#lop').val()
        $.ajax({
