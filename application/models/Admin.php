@@ -100,6 +100,15 @@ class Admin extends CI_Model
         return json_encode(array("ti_le_vang"=>floatval(intval($vang[0]['vang'])/((intval($vang[0]['vang']) + intval($kovang[0]['kvang'])))) * 100,"ko_vang"=>floatval(intval($kovang[0]['kvang'])/((intval($vang[0]['vang']) + intval($kovang[0]['kvang'])))) * 100));
 
      }
+     public function getvalueeditbuoivang($mssv,$id)
+     {
+         return $this->db->select('buoivang.mssv,hoten,buoivang')->from('buoivang')->join('sinhvien','buoivang.mssv=sinhvien.mssv')->where(array('buoivang.mssv'=>$mssv,'idmonhoc'=>$id))->get()->result_array();
+     }
+     public function deletebuoivang($mssv,$buoivang)
+     {
+        $this->db->delete('buoivang', array('mssv' => $mssv,'buoivang'=>$buoivang));
+     }
+
 
 
 

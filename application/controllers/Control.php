@@ -70,6 +70,7 @@ class Control extends CI_Controller {
 		$data['header']='module/navbar';
 		$data['sidebar']='module/sidebar';
 		$data['diemdanh']='module/suabuoivang-content';
+		$data['class']=$this->admin->get_class();
 		$this->load->view('dashboard',$data);
 	}
 
@@ -188,6 +189,65 @@ class Control extends CI_Controller {
 	{
 		echo($this->admin->tylevang());
 	}
+	public function suabuoivang()
+	{
+		if($this->input->post('malop')&&$this->input->post('mamon')){
+
+			
+			$data=$this->admin->get_value($this->input->post('malop'),$this->input->post('mamon'));
+			$push=array();
+			foreach($data as $key=>$value)
+			{
+				array_push($data[$key],'<button type="button" class="btn btn-primary btn-suabuoivang" data-toggle="modal" data-target="#suabuoivang" onclick="editbuoivang(\''.$value['mssv'].'\')">
+				Sửa buổi vắng
+			  </button>');
+			}
+			$re=array("data"=>$data);
+			
+			echo	json_encode($re,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
+		}
+	}
+	public function laygido()
+	{
+		if($this->input->post('mssv')&&$this->input->post('idmonhoc')){
+			$data=$this->admin->getvalueeditbuoivang($this->input->post('mssv'),$this->input->post('idmonhoc'));
+			if(count($data)>0){
+				$t='<table class="table" id="edittable">
+				<thead class="thead-light">
+					<tr>
+						<th>Mssv</th>
+						<th>Họ và Tên</th>
+						<th>Vắng ngày</th>  
+					</tr>
+				</thead>
+				<tbody>';
+				foreach ($data as $value)
+				{
+				
+					$t.='<tr>		
+							<td>'.$value["mssv"].'</td>
+							<td>'.$value["hoten"].'</td>
+							<td>'.$value["buoivang"].'</td>
+						</tr>';
+				}
+				echo $t .'</tbody></table>';
+			}
+			else{
+				$t="Sinh viên này không nghỉ ngày nào";
+				echo $t;
+			}
+		}
+	}
+	public function deletebuoivang()
+	{
+		if($this->input->post('action')=='delete'){
+			$this->admin->deletebuoivang($this->input->post('mssv'),$this->input->post('buoivang'));
+			echo json_encode($this->input->post('action'));
+	
+		}
+		
+	}
+
 
 
 
