@@ -103,7 +103,7 @@
                 },
                 save:{
                     class: 'btn btn-success',
-                    html: '<span class="glyphicon glyphicon-pencil"></span> &nbsp save',
+                    html: '<span class="glyphicon glyphicon-pencil"></span> &nbsp SAVE',
                     action:'save'
                 }
             },
