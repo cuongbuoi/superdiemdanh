@@ -91,6 +91,17 @@ class Admin extends CI_Model
         $this->db->update('monhoc',$data);
      }
 
+      public function tylevang(){
+      $vang = $this->db->select('count(mssv) as vang')->where('diem1 != 10')->from('diemdanh')->get()->result_array();
+
+      $kovang = $this->db->select('count(mssv) as kvang')->where('diem1 = 10')->from('diemdanh')->get()->result_array();
+      
+      
+        return json_encode(array("ti_le_vang"=>floatval(intval($vang[0]['vang'])/((intval($vang[0]['vang']) + intval($kovang[0]['kvang'])))) * 100,"ko_vang"=>floatval(intval($kovang[0]['kvang'])/((intval($vang[0]['vang']) + intval($kovang[0]['kvang'])))) * 100));
+
+     }
+
+
 
   
 

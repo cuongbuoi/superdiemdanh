@@ -184,6 +184,10 @@ class Control extends CI_Controller {
 		$this->admin->editmonhoc($this->input->post('id'),$this->input->post('tenmonhoc'),$this->input->post('sotinhchi'),$this->input->post('sotiet'));
 	}
 
+	public function tylevang()
+	{
+		echo($this->admin->tylevang());
+	}
 
 
 

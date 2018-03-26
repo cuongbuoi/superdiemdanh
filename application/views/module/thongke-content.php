@@ -104,8 +104,7 @@ var options = {
 var theme = {
     series: {
         colors: [
-            '#83b14e', '#458a3f', '#295ba0', '#2a4175', '#289399',
-            '#289399', '#617178', '#8a9a9a', '#516f7d', '#dddddd'
+            'red','orange','blue','green'
         ]
     }
 };
@@ -130,23 +129,35 @@ if(detectmob())
 	width1 = 320;
 	height1 = 320;
 }
-	var container = document.getElementById('chart-area-2');
+
+    $.ajax({
+        url: 'tylevang',
+        type: 'GET',
+        success: function(res){
+            data = $.parseJSON(res);
+            chart2(data['ti_le_vang'],data['ko_vang'])
+        }
+    })
+    
+
+	function chart2(tlv,tlkv){
+        var container = document.getElementById('chart-area-2');
 var data = {
     categories: ['Tỉ lệ vắng'],
     series: [
         {
             name: 'Không vắng',
-            data: 46.02
+            data: tlkv
         },
         {
             name: 'Vắng',
-            data: 20.47
+            data: tlv
         }
     ]
 };
 var options = {
     chart: {
-       	width: width1,
+        width: width1,
         height: height1,
         title: 'Thống kê tỷ lệ vắng '
     },
@@ -172,4 +183,5 @@ var theme = {
 // options.theme = 'myTheme';
 
 tui.chart.pieChart(container, data, options);
+    }
 </script>
