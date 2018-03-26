@@ -20,6 +20,10 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
+		 if($this->session->userdata('admin') != '')
+        {
+            redirect(base_url().'superdiemdanh/control/dashboard');
+        }
 		$this->load->model('login');
 		if($this->input->post('action'))
 		{
