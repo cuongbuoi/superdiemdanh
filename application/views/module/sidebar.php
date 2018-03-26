@@ -39,5 +39,8 @@
                 <li><a href="<?php echo base_url().'superdiemdanh/control/dashboard4'; ?>">Quản lý 3</a></li>
             </ul>
         </li>
+        <li <?php if($this->uri->segment(2)=="dashboard5") echo  'class="active"'; ?>>
+            <a href="<?php echo base_url().'superdiemdanh/control/dashboard5'; ?>">Sửa buổi vắng</a>
+        </li>
     </ul>
 </nav>

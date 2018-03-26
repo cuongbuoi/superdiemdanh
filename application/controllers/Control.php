@@ -62,6 +62,16 @@ class Control extends CI_Controller {
 		$data['diemdanh']='module/quanly-content';
 		$this->load->view('dashboard',$data);
 	}
+	public function dashboard5(){
+		if($this->session->userdata('admin') == '')
+		{
+			redirect(base_url() .'superdiemdanh/');
+		}
+		$data['header']='module/navbar';
+		$data['sidebar']='module/sidebar';
+		$data['diemdanh']='module/suabuoivang-content';
+		$this->load->view('dashboard',$data);
+	}
 
 	public function get()
 	{
