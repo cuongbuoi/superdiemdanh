@@ -189,6 +189,11 @@ class Control extends CI_Controller {
 		echo($this->admin->tylevang());
 	}
 
+	public function tylediem()
+	{
+		echo $this->admin->tylediem();
+	}
+
 
 
 }
