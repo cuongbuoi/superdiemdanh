@@ -51,6 +51,20 @@
 </div>
 
 <script class='code-js' id='code-js'>
+	var width1 = 500;
+	var height1 = 500;
+	function detectmob() {
+   return (/Mobile/i.test(navigator.userAgent))
+}
+
+if(detectmob())
+{
+	width1 = 340;
+	height1 = 340;
+}
+
+
+
 	var container = document.getElementById('chart-area');
 var data = {
     categories: ['Tỉ lệ điểm'],
@@ -76,8 +90,8 @@ var data = {
 };
 var options = {
     chart: {
-       	width: 500,
-        height: 500,
+       	width: width1,
+        height: height1,
         title: 'Thống kê tỷ lệ điểm '
     },
     tooltip: {
@@ -105,6 +119,17 @@ tui.chart.pieChart(container, data, options);
 </script>
 
 <script class='code-js' id='code-js'>
+	var width1 = 500;
+	var height1 = 500;
+	function detectmob() {
+   return (/Mobile/i.test(navigator.userAgent))
+}
+
+if(detectmob())
+{
+	width1 = 340;
+	height1 = 340;
+}
 	var container = document.getElementById('chart-area-2');
 var data = {
     categories: ['Tỉ lệ vắng'],
@@ -121,8 +146,8 @@ var data = {
 };
 var options = {
     chart: {
-       	width: 500,
-        height: 500,
+       	width: width1,
+        height: height1,
         title: 'Thống kê tỷ lệ vắng '
     },
     tooltip: {
