@@ -83,6 +83,7 @@ class Control extends CI_Controller {
 				<td>".$value['diem1']."</td>
 				<td>".$value['diem2']."</td>
 				<td>".$value['diem3']."</td>
+				<td>".round(floatval(($value['diem1']+$value['diem2']+$value['diem3'])/3),2,PHP_ROUND_HALF_UP)."</td>
 				</tr>";
 		}
 		echo $t;
@@ -136,6 +137,10 @@ class Control extends CI_Controller {
 		else
 			echo "ahuhu";
 		
+	}
+	public function a()
+	{
+		echo base_url();
 	}
 
 }

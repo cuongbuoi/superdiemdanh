@@ -39,6 +39,7 @@
                     <th>Điểm 1</th>
                     <th>Điểm 2</th>
                     <th>Điểm 3</th>
+                    <th>Điểm TB</th>
                
                 </tr>
             </thead>
