@@ -50,6 +50,7 @@
     </div>
     <script src="../application/assets/js/jquery.tabledit.js"></script>
     <script>
+
     function sub(){
         var idclass= $('#lop').val()
        $.ajax({
