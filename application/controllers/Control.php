@@ -219,6 +219,7 @@ class Control extends CI_Controller {
 				$t='<table class="table" id="edittable">
 				<thead class="thead-light">
 					<tr>
+						<th style="display:none"></th>
 						<th>Mssv</th>
 						<th>Họ và Tên</th>
 						<th>Vắng ngày</th>  
@@ -228,7 +229,8 @@ class Control extends CI_Controller {
 				foreach ($data as $value)
 				{
 				
-					$t.='<tr>		
+					$t.='<tr>
+							<td style="display:none">'.$value['mssv'].'|'.$value['buoivang'].'</td>	
 							<td>'.$value["mssv"].'</td>
 							<td>'.$value["hoten"].'</td>
 							<td>'.$value["buoivang"].'</td>
@@ -245,7 +247,8 @@ class Control extends CI_Controller {
 	public function deletebuoivang()
 	{
 		if($this->input->post('action')=='delete'){
-			$this->admin->deletebuoivang($this->input->post('mssv'),$this->input->post('buoivang'));
+			$id = $this->input->post('id');
+			$this->admin->deletebuoivang($id);
 			echo json_encode($this->input->post('action'));
 	
 		}

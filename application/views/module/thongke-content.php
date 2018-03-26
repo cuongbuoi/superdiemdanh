@@ -59,7 +59,7 @@
             <div class="form-group">
                 <label>Chọn môn</label>
                 <select id="mon" class="form-control tt">
-                <option value="0"></option>
+                <option value="#"></option>
                 </select>
             </div>
         </form>
@@ -124,6 +124,7 @@
 jQuery(document).ready(function($) {
 
     $('.tt').on('change', function(event) {
+
         var idclass=$('#lop').val()
        var idmon=$('#mon').val()
 
@@ -138,13 +139,15 @@ if(detectmob())
     height1 = 320;
 }
 
-
-    $.ajax({
+    if(idmon != '#')
+    {
+         $.ajax({
         url: 'tylediem',
         type: 'POST',
         data:{'idclass': idclass ,'idmon' : idmon},
         success: function(res){
             data = $.parseJSON(res);
+            $("#chart-area-2").html('');
             chart1(data['diem_kem'],data['diem_tb'],data['diem_kha'],data['diem_gioi'])
         }
     })
@@ -155,9 +158,14 @@ if(detectmob())
         data:{'idclass': idclass ,'idmon' : idmon},
         success: function(res){
             data = $.parseJSON(res);
+            $("#chart-area-2").html('');
             chart2(data['ti_le_vang'],data['ko_vang'])
         }
     })
+
+    }
+
+   
 
         event.preventDefault();
        

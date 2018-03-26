@@ -104,9 +104,10 @@ class Admin extends CI_Model
      {
          return $this->db->select('buoivang.mssv,hoten,buoivang')->from('buoivang')->join('sinhvien','buoivang.mssv=sinhvien.mssv')->where(array('buoivang.mssv'=>$mssv,'idmonhoc'=>$id))->get()->result_array();
      }
-     public function deletebuoivang($mssv,$buoivang)
+     public function deletebuoivang($id)
      {
-        $this->db->delete('buoivang', array('mssv' => $mssv,'buoivang'=>$buoivang));
+        $data = explode("|", $id);
+        $this->db->delete('buoivang', array('mssv' => $data[0],'buoivang'=>$data[1]));
      }
 
 

@@ -34,31 +34,30 @@
                                 }
                             },
                             columns: {
-                                identifier: [0,'mssv'],
+                                identifier: [0,'id'],
                                 editable: [[1,'mssv']]
                             },
                             onDraw: function() {
-                                console.log('onDraw()');
+                                
                             },
                             onSuccess: function(data, textStatus, jqXHR) {
-                                console.log('onSuccess(data, textStatus, jqXHR)');
-                                console.log(data);
-                                console.log(textStatus);
-                                console.log(jqXHR);
+                                // console.log(data)
+                                 $('#example').DataTable().ajax.reload();
+                                 thongbao('Thông báo','Đã xóa','success')
+
+                                // console.log('onSuccess(data, textStatus, jqXHR)');
+                                // console.log(data);
+                                // console.log(textStatus);
+                                // console.log(jqXHR);
                             },
                             onFail: function(jqXHR, textStatus, errorThrown) {
-                                console.log('onFail(jqXHR, textStatus, errorThrown)');
-                                console.log(jqXHR);
-                                console.log(textStatus);
-                                console.log(errorThrown);
+                               
                             },
                             onAlways: function() {
-                                console.log('onAlways()');
+                               
                             },
                             onAjax: function(action, serialize) {
-                                console.log('onAjax(action, serialize)');
-                                console.log(action);
-                                console.log(serialize);
+                                
                             }
                         });
                       }
@@ -231,6 +230,7 @@ function get_table(idclass,idmon)
             { "data": "gioitinh" },
             { "data": "tenlop" },
             {"data": "bv"},
+
             { "data": "0" }
         ]
     } );
