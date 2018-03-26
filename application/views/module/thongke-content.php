@@ -59,8 +59,8 @@
 
 if(detectmob())
 {
-	width1 = 340;
-	height1 = 340;
+	width1 = 320;
+	height1 = 320;
 }
 
 
@@ -127,8 +127,8 @@ tui.chart.pieChart(container, data, options);
 
 if(detectmob())
 {
-	width1 = 340;
-	height1 = 340;
+	width1 = 320;
+	height1 = 320;
 }
 	var container = document.getElementById('chart-area-2');
 var data = {
