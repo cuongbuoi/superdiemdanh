@@ -39,6 +39,33 @@
 </div> -->
 
 <div class="thongke">
+    <div class="row control">
+    <div class="chonmon col-md-6">
+        <form action="http://localhost/superdiemdanh/" method="post">
+            <div class="form-group">
+                <label>Chọn lớp</label>
+                <select id="lop" class="form-control">
+                    
+                <?php foreach ($class as $value){ ?>
+                    
+                    <option value="<?php echo $value['malop']; ?>"><?php echo $value['tenlop']; ?></option>
+                <?php } ?>
+                </select>
+            </div>
+        </form>
+    </div>
+    <div class="chonmon col-md-6">
+        <form action="http://localhost/superdiemdanh/" method="post">
+            <div class="form-group">
+                <label>Chọn môn</label>
+                <select id="mon" class="form-control tt">
+                <option value="0"></option>
+                </select>
+            </div>
+        </form>
+    </div>
+    
+</div>
 	<div class="row">
 		<div class="col-md-6">
 			     <div id="chart-area"></div>
@@ -49,29 +76,93 @@
 		</div>
 	</div>
 </div>
+<script>
+     
+    function sub(){
+        var idclass= $('#lop').val()
+       $.ajax({
+           type: "post",
+           url: "get_sub",
+           data: {"id":idclass},
+           success: function (response) {
+               $('.tt').append(response)
 
+           }
+       });
+    }
+    $( document ).ready(function() {
+      sub()
+    });
+    $('#lop').on('change', function() {
+         sub()
+    })
+   function get(){
+       var idclass=$('#lop').val()
+       var idmon=$('#mon').val()
+       $.ajax({
+           type: "post",
+           url: "get_table",
+           data: {
+               "class":idclass,
+               "mon":idmon
+           },
+           success: function (response) {
+               $('#print').html(response)
+               edit()
+               $(".btn-toolbar").css("display","block");
+           }
+       });
+   }
+
+    
+    
+    </script>
+</div>
 <script class='code-js' id='code-js'>
-	var width1 = 500;
-	var height1 = 500;
-	function detectmob() {
+     var width1 = 500;
+        var height1 = 500;
+jQuery(document).ready(function($) {
+
+    $('.tt').on('change', function(event) {
+        var idclass=$('#lop').val()
+       var idmon=$('#mon').val()
+
+      
+    function detectmob() {
    return (/Mobile/i.test(navigator.userAgent))
 }
 
 if(detectmob())
 {
-	width1 = 320;
-	height1 = 320;
+    width1 = 320;
+    height1 = 320;
 }
 
 
     $.ajax({
         url: 'tylediem',
-        type: 'GET',
+        type: 'POST',
+        data:{'idclass': idclass ,'idmon' : idmon},
         success: function(res){
             data = $.parseJSON(res);
             chart1(data['diem_kem'],data['diem_tb'],data['diem_kha'],data['diem_gioi'])
         }
     })
+
+    $.ajax({
+        url: 'tylevang',
+        type: 'POST',
+        data:{'idclass': idclass ,'idmon' : idmon},
+        success: function(res){
+            data = $.parseJSON(res);
+            chart2(data['ti_le_vang'],data['ko_vang'])
+        }
+    })
+
+        event.preventDefault();
+       
+    });
+});
 
 function chart1(diemkem,diemtb,diemkha,diemgioi)
 {
@@ -128,33 +219,8 @@ var theme = {
 tui.chart.pieChart(container, data, options);
 }
 
-	
-</script>
 
-<script class='code-js' id='code-js'>
-	var width1 = 500;
-	var height1 = 500;
-	function detectmob() {
-   return (/Mobile/i.test(navigator.userAgent))
-}
-
-if(detectmob())
-{
-	width1 = 320;
-	height1 = 320;
-}
-
-    $.ajax({
-        url: 'tylevang',
-        type: 'GET',
-        success: function(res){
-            data = $.parseJSON(res);
-            chart2(data['ti_le_vang'],data['ko_vang'])
-        }
-    })
-    
-
-	function chart2(tlv,tlkv){
+function chart2(tlv,tlkv){
         var container = document.getElementById('chart-area-2');
 var data = {
     categories: ['Tỉ lệ vắng'],
@@ -201,3 +267,4 @@ var theme = {
 tui.chart.pieChart(container, data, options);
     }
 </script>
+

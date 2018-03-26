@@ -50,6 +50,8 @@ class Control extends CI_Controller {
 		$data['header']='module/navbar';
 		$data['sidebar']='module/sidebar';
 		$data['diemdanh']='module/thongke-content';
+		$data['class']=$this->admin->get_class();
+	
 		$this->load->view('dashboard',$data);
 	}
 	public function dashboard4(){
@@ -187,7 +189,9 @@ class Control extends CI_Controller {
 
 	public function tylevang()
 	{
-		echo($this->admin->tylevang());
+		$class = $this->input->post('idclass');
+		$mon = $this->input->post('idmon');
+		echo $this->admin->tylevang($class,$mon);
 	}
 	public function suabuoivang()
 	{
@@ -251,7 +255,19 @@ class Control extends CI_Controller {
 
 	public function tylediem()
 	{
-		echo $this->admin->tylediem();
+		if( $this->input->post('idclass') != '' and  $this->input->post('idmon'))
+		{
+			$class = $this->input->post('idclass');
+			  $mon = $this->input->post('idmon');
+			 
+			echo $this->admin->tylediem($class,$mon);
+		}
+		else
+		{
+			echo 'error';
+		}
+		
+		
 	}
 
 
