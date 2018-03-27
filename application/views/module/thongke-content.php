@@ -59,7 +59,6 @@
             <div class="form-group">
                 <label>Chọn môn</label>
                 <select id="mon" class="form-control tt">
-                <option value="#"></option>
                 </select>
             </div>
         </form>
@@ -77,7 +76,6 @@
 	</div>
 </div>
 <script>
-     
     function sub(){
         var idclass= $('#lop').val()
        $.ajax({
@@ -85,7 +83,7 @@
            url: "get_sub",
            data: {"id":idclass},
            success: function (response) {
-               $('.tt').append(response)
+               $('.tt').html(response)
 
            }
        });
@@ -126,18 +124,16 @@ jQuery(document).ready(function($) {
     $('.tt').on('change', function(event) {
 
         var idclass=$('#lop').val()
-       var idmon=$('#mon').val()
-
-      
+         var idmon=$('#mon').val()
     function detectmob() {
-   return (/Mobile/i.test(navigator.userAgent))
-}
+     return (/Mobile/i.test(navigator.userAgent))
+    }
 
-if(detectmob())
-{
-    width1 = 320;
-    height1 = 320;
-}
+    if(detectmob())
+    {
+        width1 = 320;
+        height1 = 320;
+    }
 
     if(idmon != '#')
     {
