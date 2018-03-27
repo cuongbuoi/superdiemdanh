@@ -143,7 +143,7 @@ jQuery(document).ready(function($) {
         data:{'idclass': idclass ,'idmon' : idmon},
         success: function(res){
             data = $.parseJSON(res);
-            $("#chart-area-2").html('');
+            $("#chart-area").html('');
             chart1(data['diem_kem'],data['diem_tb'],data['diem_kha'],data['diem_gioi'])
         }
     })
