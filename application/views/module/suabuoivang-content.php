@@ -25,12 +25,12 @@
                             buttons: {
                                 delete: {
                                     class: 'btn btn-xoabuoi btn-danger',
-                                    html: '<span class="glyphicon glyphicon-trash"></span> &nbsp DELETE',
+                                    html: '<span class="glyphicon glyphicon-trash"></span> &nbsp Xóa',
                                     action: 'delete'
                                 },
                                 confirm: {
                                     class: 'btn  btn-default btn-xacnhan',
-                                    html: 'Are you sure?'
+                                    html: 'Xác nhận ?'
                                 }
                             },
                             columns: {
