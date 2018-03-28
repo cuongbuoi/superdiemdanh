@@ -59,10 +59,16 @@ class Control extends CI_Controller {
 		{
 			redirect(base_url() .'superdiemdanh/');
 		}
-		$data['header']='module/navbar';
-		$data['sidebar']='module/sidebar';
-		$data['diemdanh']='module/quanly-content';
-		$this->load->view('dashboard',$data);
+		if($this->uri->segment(3)==''){
+			$data['header']='module/navbar';
+			$data['sidebar']='module/sidebar';
+			$data['diemdanh']='module/quanly-content';
+			$this->load->view('dashboard',$data);
+		}
+		else if($this->uri->segment(3)=='insert'){
+			echo "ahihi";
+		}
+		
 	}
 	public function dashboard5(){
 		if($this->session->userdata('admin') == '')
