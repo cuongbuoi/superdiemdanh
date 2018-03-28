@@ -185,6 +185,7 @@ class Control extends CI_Controller {
 	public function editmon()
 	{
 		$this->admin->editmonhoc($this->input->post('id'),$this->input->post('tenmonhoc'),$this->input->post('sotinhchi'),$this->input->post('sotiet'));
+		echo json_encode('ok');
 	}
 
 	public function tylevang()

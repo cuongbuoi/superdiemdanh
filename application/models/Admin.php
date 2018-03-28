@@ -89,6 +89,7 @@ class Admin extends CI_Model
         $data= array('tenmonhoc'=>$tenmon,'sotinhchi'=>$sotc,'sotiet'=>$sotiet);
         $this->db->where('id',$id);
         $this->db->update('monhoc',$data);
+        
      }
 
       public function tylevang($idclass,$idmon){
