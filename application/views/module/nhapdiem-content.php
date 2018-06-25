@@ -23,6 +23,9 @@
     </div>
     <div class="col-md-12">
             <div class="nut float-right mb-3" >
+                <button class="btn btn-primary btn-nhapdiem" onclick="report()"><span class="glyphicon glyphicon-edit"></span> Xuất Excel</button>
+            </div>
+            <div class="nut float-right mb-3 mr-3" >
                 <button class="btn btn-primary btn-nhapdiem" onclick="get()"><span class="glyphicon glyphicon-edit"></span> Nhập điểm</button>
             </div>
     </div>
@@ -36,9 +39,9 @@
                     <th>MSSV</th>
                     <th>Lớp</th>
                     <th>Môn</th>
-                    <th>Điểm 1</th>
-                    <th>Điểm 2</th>
-                    <th>Điểm 3</th>
+                    <th>Điểm CC</th>
+                    <th>Điểm GK</th>
+                    <th>Điểm TX</th>
                     <th>Điểm TB</th>
                
                 </tr>
@@ -122,6 +125,12 @@
                 console.log(errorThrown);
                     }
              });
+    }
+    function report()
+    {
+        var lop=$('#lop').val()
+        var mon=$('#mon').val()
+        location.href='report/'+lop+'/'+mon
     }
     
     </script>

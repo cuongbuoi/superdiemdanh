@@ -129,6 +129,29 @@ class Admin extends CI_Model
 
 
      }
+     public function Them_mon_hoc($tenmon,$sotinhchi,$sotiet)
+     {
+         if($this->db->insert('monhoc',['tenmonhoc'=>$tenmon,'sotinhchi'=>$sotinhchi,'sotiet'=>$sotiet]))
+         {
+             return 1;
+         }
+         else
+         {
+             return 0;
+         }
+         
+     }
+     public function them_lop($malop,$tenlop)
+     {
+        if($this->db->insert('lop',['malop'=>$malop,'tenlop'=>$tenlop,'khoa'=>'Kỹ Thuật-Công Nghệ-Môi Trường']))
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+     }
 
 
 

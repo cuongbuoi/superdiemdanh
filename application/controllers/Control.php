@@ -5,6 +5,7 @@ class Control extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->model('admin');
+		$this->load->database();
 		
 	}		
 	public function logout()
@@ -66,7 +67,7 @@ class Control extends CI_Controller {
 			$this->load->view('dashboard',$data);
 		}
 		else if($this->uri->segment(3)=='insert'){
-			echo "ahihi";
+			
 		}
 		
 	}
@@ -112,7 +113,7 @@ class Control extends CI_Controller {
 				<td>".$value['diem1']."</td>
 				<td>".$value['diem2']."</td>
 				<td>".$value['diem3']."</td>
-				<td>".round(floatval(($value['diem1']+$value['diem2']+$value['diem3'])/3),2,PHP_ROUND_HALF_UP)."</td>
+				<td>".round(floatval(($value['diem1']+$value['diem2']+($value['diem3'])*2)/4),1,PHP_ROUND_HALF_UP)."</td>
 				</tr>";
 		}
 		echo $t;
@@ -278,6 +279,149 @@ class Control extends CI_Controller {
 		}
 		
 		
+	}
+	public function report()
+	{
+		$data=$this->db->select('diemdanh.mssv,hoten,tenlop,tenmonhoc,diem1,diem2,diem3,gioitinh')->from('diemdanh')->join('sinhvien','diemdanh.mssv=sinhvien.mssv')
+		->join('lop','diemdanh.malop=lop.malop')->join('monhoc','diemdanh.idmonhoc=monhoc.id')->where('diemdanh.malop',	 $this->uri->segment(3, 0))->where('diemdanh.idmonhoc',$this->uri->segment(4, 0))
+		->get()->Result_Array();
+		if(count( $data)>0)
+		{
+			$this->load->library('print');
+			$this->print->report($data);
+		}
+		else
+		{
+			redirect(base_url().'superdiemdanh/control/dashboard2');
+		}
+	
+		
+	}
+	public function insert()
+	{
+		if($this->input->post('action')=='insert')
+		{
+			$config = array(
+				array(
+								'field' => 'tenmon',
+								'label' => 'tenmon',
+								'rules' => 'required',
+								'errors' => array(
+									'required' => 'Tên môn học không được bỏ trống',
+					),
+				),
+				array(
+					'field' => 'sotinhchi',
+					'label' => 'sotinhchi',
+					'rules' => 'required',
+					'errors' => array(
+									'required' => 'Số tín chỉ không được bỏ trống',
+					),
+				),
+				array(
+					'field' => 'sotiet',
+					'label' => 'sotiet',
+					'rules' => 'required',
+					'errors' => array(
+									'required' => 'Số tiết không được bỏ trống',
+					),
+				)
+			);
+			$this->form_validation->set_rules($config);
+			if ($this->form_validation->run() == FALSE)
+			{	
+				$data['header']='module/navbar';
+				$data['sidebar']='module/sidebar';
+				$data['diemdanh']='module/themmonhoc-content';
+				$this->load->view('dashboard',$data);
+			}
+			else
+			{
+				if($this->admin->Them_mon_hoc($this->input->post('tenmon'),$this->input->post('sotinhchi'),$this->input->post('sotiet'))==1)
+				{
+					redirect(base_url().'superdiemdanh/control/dashboard4');
+				}
+			}
+		}else{
+			$data['header']='module/navbar';
+			$data['sidebar']='module/sidebar';
+			$data['diemdanh']='module/themmonhoc-content';
+			$this->load->view('dashboard',$data);
+		}
+			
+	}
+	public function readexcel()
+	{
+	   if(isset($_FILES['f']))
+	   {
+		$config['upload_path'] = 'application/upload/';
+		$config['allowed_types'] = 'csv|xls|xlsx';
+		$config['overwrite'] = true;
+		$this->load->library("upload", $config);
+			if($this->upload->do_upload("f"))
+			{
+				$check = $this->upload->data();
+				$this->load->library('print');
+				$kk=$this->print->read('application/upload/'.$check['file_name'].'',$this->input->post('lop'));
+				$this->db->insert_batch('sinhvien', $kk); 
+			
+			}
+			else
+			{
+				echo "ahuhu";
+			}
+				
+	   }
+
+	   		$data['header']='module/navbar';
+			$data['sidebar']='module/sidebar';
+			$data['diemdanh']='module/upload-content';
+			$data['lop']=$this->db->get('lop')->result_Array();
+			$this->load->view('dashboard',$data);
+	}
+	public function insertclass()
+	{
+		if($this->input->post('action')=='insert')
+		{
+			$config = array(
+				array(
+								'field' => 'tenmon',
+								'label' => 'tenmon',
+								'rules' => 'required',
+								'errors' => array(
+									'required' => 'Mã lớp không được bỏ trống',
+					),
+				),
+				array(
+					'field' => 'sotinhchi',
+					'label' => 'sotinhchi',
+					'rules' => 'required',
+					'errors' => array(
+									'required' => 'Tên lớp không được bỏ trống',
+					),
+				),
+			);
+			$this->form_validation->set_rules($config);
+			if ($this->form_validation->run() == FALSE)
+			{	
+				$data['header']='module/navbar';
+				$data['sidebar']='module/sidebar';
+				$data['diemdanh']='module/themlop-content';
+				$this->load->view('dashboard',$data);
+			}
+			else
+			{
+				if($this->admin->them_lop($this->input->post('tenmon'),$this->input->post('sotinhchi'))==1)
+				{
+					redirect(base_url().'superdiemdanh/control/readexcel');
+				}
+			}
+		}else{
+			$data['header']='module/navbar';
+			$data['sidebar']='module/sidebar';
+			$data['diemdanh']='module/themlop-content';
+			$this->load->view('dashboard',$data);
+		}
 	}
 
 

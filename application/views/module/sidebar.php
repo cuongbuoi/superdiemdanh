@@ -27,8 +27,17 @@
                 <li><a href="<?php echo base_url().'superdiemdanh/control/dashboard4'; ?>">Quản lý 3</a></li>
             </ul>
         </li>
+        <li <?php if($this->uri->segment(2)=="insert") echo  'class="active"'; ?>>
+            <a href="<?php echo base_url().'superdiemdanh/control/insert'; ?>">Thêm môn học</a>
+        </li>
+        <li <?php if($this->uri->segment(2)=="readexcel") echo  'class="active"'; ?>>
+            <a href="<?php echo base_url().'superdiemdanh/control/readexcel'; ?>">Upload sinh viên</a>
+        </li>
         <li <?php if($this->uri->segment(2)=="dashboard5") echo  'class="active"'; ?>>
-            <a href="<?php echo base_url().'superdiemdanh/control/dashboard5'; ?>">Sửa buổi vắng</a>
+            <a href="<?php echo base_url().'superdiemdanh/control/dashboard5'; ?>">Chi tiết buổi vắng</a>
+        </li>
+        <li <?php if($this->uri->segment(2)=="insertclass") echo  'class="active"'; ?>>
+            <a href="<?php echo base_url().'superdiemdanh/control/insertclass'; ?>">Thêm lớp</a>
         </li>
     </ul>
 </nav>

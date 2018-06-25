@@ -179,5 +179,8 @@ return array(
 	'odt'	=>	'application/vnd.oasis.opendocument.text',
 	'odm'	=>	'application/vnd.oasis.opendocument.text-master',
 	'ott'	=>	'application/vnd.oasis.opendocument.text-template',
-	'oth'	=>	'application/vnd.oasis.opendocument.text-web'
+	'oth'	=>	'application/vnd.oasis.opendocument.text-web',
+	'xls'=>array('application/excel', 'application/vnd.ms-excel', 'application/octet-stream'),
+	'csv'   =>  array('text/x-comma-separated-values', 'text/comma-separated-values', 'application/octet-stream', 'application/vnd.ms-excel', 'application/x-csv', 'text/x-csv', 'text/csv', 'application/csv', 'application/excel', 'application/vnd.msexcel', 'text/plain'),
 );
+
